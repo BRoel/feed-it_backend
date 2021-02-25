@@ -8,21 +8,21 @@ class CommentsController < ApplicationController
     def create
         comment = Comment.new(comment_params)
         if comment.save
-            render json: PostSerializer.new(post), status: :accepted #sending status codes and accepting or rejecting
+            render json: CommentSerializer.new(comment), status: :accepted #sending status codes and accepting or rejecting
         else
-            render json: {errors: post.errors.full_messages}, status: :unprocessible_entity
+            render json: {errors: comment.errors.full_messages}, status: :unprocessible_entity
         end
     end
 
     def destroy
-        post = Post.find(params[:id])
-        post.destroy
+        comment = Comment.find(params[:id])
+        comment.destroy
     end
 
     private
 
-    def post_params
-        params.require(:post).permit(:title, :body)
+    def comment_params
+        params.require(:comment).permit(:content)
     end
 
 end
