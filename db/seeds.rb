@@ -10,3 +10,5 @@
 Post.create(title: "First Post", body: "First Body")
 Post.create(title: "Second Post", body: "Second Body")
 Post.create(title: "Third Post", body: "Third Body")
+
+comment = Comment.create(post_id: 1, content: "First Comment")

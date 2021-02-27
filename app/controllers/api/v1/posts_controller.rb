@@ -14,15 +14,15 @@ class Api::V1::PostsController < ApplicationController
         end
     end
 
-    # def show
-    #     @post = Post.find(params[:id])
-    #     render json: @post
-    # end
+    def show
+        @post = Post.find(params[:id])
+        render json: @post
+    end
 
-    # def destroy
-    #     @post = Post.find(params[:id])
-    #     @post.destroy
-    # end
+    def destroy
+        @post = Post.find(params[:id])
+        @post.destroy
+    end
 
     private
 
