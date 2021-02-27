@@ -7,4 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Post.create(title: 'Hogwarts Legacy', body: 'Open world Harry Potter Universe game') 	
+Post.create(title: "First Post", body: "First Body")
+Post.create(title: "Second Post", body: "Second Body")
+Post.create(title: "Third Post", body: "Third Body")
