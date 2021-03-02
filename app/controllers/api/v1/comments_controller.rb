@@ -6,10 +6,10 @@ class Api::V1::CommentsController < ApplicationController
         render json: comments
     end
 
-    def show
-        comment = Comment.find(params[:id])
-        render json: comment
-    end
+    # def show
+    #     comment = Comment.find(params[:id])
+    #     render json: comment
+    # end
 
     def create
         comment = @post.comments.new(comment_params)
