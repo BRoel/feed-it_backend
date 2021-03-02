@@ -1,35 +1,35 @@
 class Api::V1::CommentsController < ApplicationController
     before_action :set_post
-    
+  
     def index
-        @comments = Comment.all
-        render json: @comments
+        comments = Comment.all
+        render json: comments
     end
 
     def show
-        @comment = Comment.find(params[:id])
-        render json: @comment
+        comment = Comment.find(params[:id])
+        render json: comment
     end
 
     def create
-        @comment = @post.comments.new(comment_params)
-        if @comment.save
+        comment = @post.comments.new(comment_params)
+        if comment.save
             render json: @post
         else
             render json: {errors: comment.errors.full_messages}, status: :unprocessible_entity
         end
     end
 
-    def destroy
-        @comment = Comment.find(params[:id])
-        @post = Post.find(@comment.post_id)
+    # def destroy
+    #     comment = Comment.find(params[:id])
+    #     @post = Post.find(@comment.post_id)
         
-       if @comment.destroy
-        render json: @post
-       else 
-        render json: {errors: comment.errors.full_messages}, status: :unprocessible_entity
-       end
-    end
+    #    if comment.destroy
+    #     render json: @post
+    #    else 
+    #     render json: {errors: comment.errors.full_messages}, status: :unprocessible_entity
+    #    end
+    # end
 
     private
 
