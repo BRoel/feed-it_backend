@@ -8,6 +8,13 @@
 
 
 Post.create(title: "First Post", body: "First Body")
+
+# post.image.attach(
+#     io: File.open('./public/images/01.jpeg'),
+#     filename: '01.jpeg',
+#     content_type: 'image/jpeg'
+# )
+
 Post.create(title: "Second Post", body: "Second Body")
 Post.create(title: "Third Post", body: "Third Body")
 
