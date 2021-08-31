@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'static#home'
+  resources :sessions, only: [:create]
   
   namespace :api do
     namespace :v1 do
