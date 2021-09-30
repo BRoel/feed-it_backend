@@ -1,8 +1,14 @@
-class Api::V1::PostsController < ApplicationController
+class Api::V1::PostsController < SecuredController
+    skip_before_action :authorize_request, only: [:index, :show]
 
     def index
         posts = Post.all
         render json: posts
+    end
+
+    def show
+        post = Post.find(params[:id])
+        render json: post
     end
 
     def create
@@ -12,11 +18,6 @@ class Api::V1::PostsController < ApplicationController
         else
             render json: {errors: post.errors.full_messages}, status: :unprocessible_entity
         end
-    end
-
-    def show
-        post = Post.find(params[:id])
-        render json: post
     end
 
     def destroy

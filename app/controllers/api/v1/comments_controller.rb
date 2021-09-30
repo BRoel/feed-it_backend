@@ -1,4 +1,5 @@
-class Api::V1::CommentsController < ApplicationController
+class Api::V1::CommentsController < SecuredController
+    skip_before_action :authorize_request, only: [:index]
     before_action :set_post
   
     def index
