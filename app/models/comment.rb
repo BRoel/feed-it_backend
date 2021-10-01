@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
+    validates_presence_of :content
     # belongs_to :user
     belongs_to :post
     # has_many :responses, class_name: 'Comment', foreign_key: 'parent_comment_id'
