@@ -39,7 +39,7 @@ class Api::V1::CommentsController < SecuredController
     end
 
     def comment_params
-        params.require(:comment).permit(:content, :post_id)
+        params.permit(:content, :post_id, :user_id)
     end
 
 end

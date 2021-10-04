@@ -4,7 +4,8 @@ class SecuredController < ApplicationController
     private
   
     def authorize_request
-      AuthorizationService.new(request.headers).authenticate_request!
+      # TODO uncomment with jwt token
+      # AuthorizationService.new(request.headers).authenticate_request!
     rescue JWT::VerificationError, JWT::DecodeError
       render json: { errors: ['Not Authenticated'] }, status: :unauthorized
     end

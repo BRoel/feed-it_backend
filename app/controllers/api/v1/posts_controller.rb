@@ -28,7 +28,7 @@ class Api::V1::PostsController < SecuredController
     private
 
     def post_params
-        params.require(:post).permit(:title, :body, :image)
+        params.permit(:title, :body, :image, :user_id, :nickname)
     end
 
 end

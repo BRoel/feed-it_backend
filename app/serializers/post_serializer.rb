@@ -1,5 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
-    attributes :id, :title, :body, :image, :user_id
+    attributes :id, :title, :body, :image, :user_id, :nickname
     # attribute :image_url do |post| 
     #     Rails.application.routes.url_helpers.rails_blob_path(post.image) if post.image.attached?
     # end
