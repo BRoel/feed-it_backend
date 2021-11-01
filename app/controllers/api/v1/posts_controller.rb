@@ -27,8 +27,17 @@ class Api::V1::PostsController < SecuredController
 
     private
 
+    def photo
+        if object.photo.attached?
+          {
+            url: rails_blob_url(object.photo),
+            signed_id: object.photo.signed_id
+          }
+        end
+    end
+
     def post_params
-        params.permit(:title, :body, :image, :user_id, :nickname)
+        params.permit(:title, :body, :image, :user_id, :nickname, :photo)
     end
 
 end
