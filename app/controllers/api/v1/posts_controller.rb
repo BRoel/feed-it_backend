@@ -13,6 +13,8 @@ class Api::V1::PostsController < SecuredController
 
     def create
         post = Post.new(post_params)
+        # JsonWebToken.verify(bearer_token)
+        !!bearer_token
         if post.save
             render json: post
         else
@@ -27,6 +29,11 @@ class Api::V1::PostsController < SecuredController
 
     private
 
+    def bearer_token
+        header  = request.headers['Authorization']
+        JsonWebToken.verify(header)
+    end
+
     def photo
         if object.photo.attached?
           {
@@ -37,7 +44,7 @@ class Api::V1::PostsController < SecuredController
     end
 
     def post_params
-        params.permit(:title, :body, :image, :user_id, :nickname, :photo)
+        params.permit(:title, :body, :image, :user_id, :nickname)
     end
 
 end

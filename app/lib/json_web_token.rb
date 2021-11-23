@@ -15,6 +15,10 @@ class JsonWebToken
     end
   end
 
+  # get the token out of the header - 
+  # import this method 
+  # verify that the id from token matches user_id
+
   def self.jwks_hash
     jwks_raw = Net::HTTP.get URI("https://salute-vets.us.auth0.com/.well-known/jwks.json")
     jwks_keys = Array(JSON.parse(jwks_raw)['keys'])
