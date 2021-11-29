@@ -14,7 +14,6 @@ class JsonWebToken
       jwks_hash[header['kid']]
     end
   end
-
   # get the token out of the header - 
   # import this method 
   # verify that the id from token matches user_id

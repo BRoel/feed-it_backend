@@ -13,8 +13,6 @@ class Api::V1::PostsController < SecuredController
 
     def create
         post = Post.new(post_params)
-        # JsonWebToken.verify(bearer_token)
-        !!bearer_token
         if post.save
             render json: post
         else
@@ -24,15 +22,16 @@ class Api::V1::PostsController < SecuredController
 
     def destroy
         post = Post.find(params[:id])
-        post.destroy
+        # debugger
+        if post.user_id === AuthorizationService.new(request.headers).authenticate_request![0]["sub"]
+            post.destroy
+        else
+            render json: {errors: post.errors.full_messages}, status: :unprocessible_entity
+        end
+        head :no_content
     end
 
     private
-
-    def bearer_token
-        header  = request.headers['Authorization']
-        JsonWebToken.verify(header)
-    end
 
     def photo
         if object.photo.attached?

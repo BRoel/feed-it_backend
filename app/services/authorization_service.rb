@@ -7,7 +7,7 @@ class AuthorizationService
     def authenticate_request!
       verify_token
     end
-  
+    
     private
   
     def http_token
